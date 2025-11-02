@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block metadescription %}
+Look For any template
+{% endblock %}
+{% block title %}
+Search - Streaming service
+{% endblock %}
+{% block content %}
+<div>
+    <p class="text-center my_search_text">You have searched for: <b>"{{ query }}"</b></p>
+</div>
+<div class="container">
+    <div class="row mx-auto">
+        {% for content in content_list %}
+        <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-md-12 col-lg-4">
+            <div class="card text-center mb-3" style="min-width: 18rem;">
+                <div class="card-body glass rounded rounded-3 ">
+                    <a href="{% url 'mediaApp:view_media' content_id=content.id %}" class="col-3">
+                        <img class="img-fluid thumbnail rounded w-100" src="{{content.con_icon}}" alt="" />
+                    </a>
+
+                    <p class="h5 mt-3">Title: {{ content.con_title }}</p>
+                    <p>Release Date: {{ content.con_released }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="row mx-auto">
+            <p class="text-center my_search_text">0 results found.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

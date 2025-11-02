@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  Log In
+{% endblock %}
+{% block content %}
+  <div class="d-flex justify-content-center mt-5 p-3">
+    <form id="login-form" style="max-width: 450px; min-height: 60vh;" class="glass w-100 p-4 position-relative rounded rounded-5" method="post" onsubmit="return validateForm()">
+      <p class="text-center mb-5 display-5 text-white">Log In</p>
+      {% csrf_token %}
+      {{ form|crispy }}
+
+      
+      <button id="btn" class="mt-5 btn btn-lg btn-primary px-4 mb-2 w-100" type="submit">Log In</button>
+    </form>
+  </div>
+{% endblock %}

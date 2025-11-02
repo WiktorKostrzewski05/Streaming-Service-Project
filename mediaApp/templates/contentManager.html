@@ -1,0 +1,88 @@
+{% extends 'admin/base.html' %}
+
+
+{% load static %}
+
+{% block content %}
+
+<style>
+  .nav-item, ul li {
+    text-decoration: none;
+    list-style-type: none;
+    color: brown;
+}
+</style>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Manage Content</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Manage Media</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Manage Files</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="text-end my-3 px-2">
+      <a href="{% url 'mediaApp:add_content'%}" class="btn text-white btn-primary btn-lg me-2">+Add content</a>
+      <a href="{% url 'mediaApp:add_media'%}" class="btn text-white btn-primary btn-lg me-2">+Add media</a>
+      <a href="{% url 'mediaApp:add_content'%}" class="btn text-white btn-primary btn-lg me-2">+Add file</a>
+
+    </div>
+    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+      <h1 class="text-center mt-3">Manage Content</h1>
+      <div  class="list-group w-100">
+        {% for cont in content %}
+          <div  class="list-group-item d-flex justify-content-between">
+            <a href="{% url 'mediaApp:edit_content' pk=cont.id %}" class="" type="button" aria-expanded="false">{{ cont.con_title }}</a>
+            <div class="d-flex gap-5">
+              <a class="link" href="{% url 'mediaApp:edit_content' pk=cont.id %}">Edit</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+      <h1 class="text-center mt-3">Manage Media</h1>
+      
+      <div  class="list-group w-100">
+        {% for med in media %}
+          <div class="list-group-item d-flex justify-content-between">
+            <p class="" type="button" aria-expanded="false">{{ med.med_title }} | {{med.med_content}}</p>
+            <div class="d-flex gap-5">
+              <a class="link-danger" href="{% url 'mediaApp:delete_media' pk=med.id %}">Delete</a>
+              <a class="link" href="{% url 'mediaApp:edit_media' pk=med.id %}">Edit</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+      <h1 class="text-center mt-3">Manage Files</h1>
+      <div class="list-group w-100">
+        {% for file in mediaFile %}
+          <button class="list-group-item list-group-item-action" type="button" data-bs-toggle="collapse" data-bs-target="#{{ file.file_title|cut:" " }}" aria-expanded="false" aria-controls="{{ file.file_title }}">{{ file.file_title }}</button>
+          <div class="collapse mt-0" id="{{ file.file_title|cut:" " }}">
+            <div class="bg-light p-4 mb-3">
+              <form class="mb-4" id="form-{{file.id}}">
+                <p>-Video-</p>
+                <p id="uploaded-Video/-{{file.id}}" class="text-primary"></p>
+                <input type="file" id="input-Video/-{{file.id}}" />
+                <button onclick={uploadFile("Video/","{{file.id}}","{{ file.file_title|cut:" " }}")} type="button">Upload File</button>
+                <a class="link mx-5" href="{% url 'mediaApp:edit_media_file' pk=file.id %}">Edit</a>
+              </form>
+            </div>
+          </div>
+        {% endfor %}
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+        <script src="{% static 'js/uploadMediaFile.js' %}"></script>
+      </div>
+    </div>
+  </div>
+{% endblock %}

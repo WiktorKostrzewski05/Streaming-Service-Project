@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+
+{% load static %}
+{% block content %}
+<title>Watchy - Subscribed!</title>
+
+<style>
+  .blob {
+    height: 75vh;
+  }
+
+  .top_display {
+    height: 75vh;
+  }
+
+  .feature_small {
+    max-width: 1200px;
+  }
+
+  .feature_medium {
+    max-width: 1500px;
+  }
+
+  .feature_large {
+    max-width: 2000px;
+  }
+
+  .small_image {
+    height: 45vh;
+  }
+
+  .feature_3d {
+    height: 40vh;
+  }
+
+  .pricing {
+    height: 50vh;
+  }
+</style>
+
+
+<div class="container-fluid px-0 overflow-x-hidden">
+  <div class="top_display position-relative">
+    <div class="z-3 position-absolute top-50 start-50 translate-middle">
+      <h1 class="z-3 text-center display-3 ">You subscribed to Watchy!</h1>
+      <h1 class="z-3 text-center display-1  fw-bold">Thank you!</h1>
+    </div>
+  </div>
+  
+
+</div>
+{% endblock %}

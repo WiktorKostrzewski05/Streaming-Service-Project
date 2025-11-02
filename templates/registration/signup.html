@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  Sign Up
+{% endblock %}
+{% block content %}
+  <div class="d-flex justify-content-center mt-5 p-3">
+    <form style="max-width: 600px;" class="glass w-100 p-4 position-relative rounded rounded-5" method="post">
+      <p class="text-center mb-5 display-5 text-white">Sign Up</p>
+      {% csrf_token %}
+      {{ form|crispy }}
+
+      <div class="col d-flex justify-content-center align-items-center">
+        <button class="btn btn-lg btn-primary px-4 mt-5 mb-2 text-center align-self-center" type="submit">Sign Up</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

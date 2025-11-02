@@ -1,0 +1,226 @@
+[
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "0c7eae66-351a-4ff7-9584-de87b2c2cf96",
+        "fields": {
+            "Content": "bdf04654-1d79-4bda-befe-a0a44d590d51",
+            "user": 24,
+            "title": "Good",
+            "review": "I think it could have been better",
+            "rating": 4.0,
+            "status": true,
+            "created_date": "2024-04-19T17:00:22Z",
+            "updated_date": "2024-04-19T17:00:26Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "299f955c-cdc4-413d-8e00-12fa5bcba2bf",
+        "fields": {
+            "Content": "8c582b4d-a2c9-44d6-90d2-aba2b73e0bc6",
+            "user": 5,
+            "title": "Poor",
+            "review": "Don't Watch",
+            "rating": 2.0,
+            "status": true,
+            "created_date": "2024-04-19T16:51:11Z",
+            "updated_date": "2024-04-19T16:51:42Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "55c6f352-a8c4-4de5-a235-ea6c3d72429a",
+        "fields": {
+            "Content": "bdf04654-1d79-4bda-befe-a0a44d590d51",
+            "user": 32,
+            "title": "Grand\n",
+            "review": "I lacked in the visuals but storyline is good and the acting is top grade\n",
+            "rating": 4.0,
+            "status": true,
+            "created_date": "2024-04-19T17:03:04Z",
+            "updated_date": "2024-04-19T17:03:08Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "589b7ebb-6592-4273-873d-512459d608c2",
+        "fields": {
+            "Content": "bdf04654-1d79-4bda-befe-a0a44d590d51",
+            "user": 20,
+            "title": "Wonderful",
+            "review": "Just watch it",
+            "rating": 5.0,
+            "status": true,
+            "created_date": "2024-04-19T16:56:31Z",
+            "updated_date": "2024-04-19T16:56:34Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "5f503ccd-1a94-41e7-8f23-8f16936778d2",
+        "fields": {
+            "Content": "4469e4d2-9c71-4718-94b7-50432b34b40b",
+            "user": 168,
+            "title": "Above Average",
+            "review": "Not bad",
+            "rating": 4.0,
+            "status": true,
+            "created_date": "2024-04-19T16:49:58Z",
+            "updated_date": "2024-04-19T16:50:02Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "7fc1aa06-4ad7-41cd-b81e-5db88ca5b0c6",
+        "fields": {
+            "Content": "28647f99-188f-4037-975c-f539d7f94b3a",
+            "user": 4,
+            "title": "dsfdsfdsf",
+            "review": "fsefesfesf",
+            "rating": 4.0,
+            "status": true,
+            "created_date": "2024-04-17T13:57:43.118Z",
+            "updated_date": "2024-04-17T13:57:43.118Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "842d1456-5330-4e80-ba69-f5c293846136",
+        "fields": {
+            "Content": "bdf04654-1d79-4bda-befe-a0a44d590d51",
+            "user": 28,
+            "title": "Out of This world\n",
+            "review": "If you watch it, you will love it",
+            "rating": 5.0,
+            "status": true,
+            "created_date": "2024-04-19T17:02:17Z",
+            "updated_date": "2024-04-19T17:02:21Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "9502a2e3-9f96-4da3-81ff-4e8766005e0f",
+        "fields": {
+            "Content": "bdf04654-1d79-4bda-befe-a0a44d590d51",
+            "user": 19,
+            "title": "Masterpiece",
+            "review": "I have nothing to say ",
+            "rating": 5.0,
+            "status": true,
+            "created_date": "2024-04-19T16:59:27Z",
+            "updated_date": "2024-04-19T16:59:28Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "9bf0bdd1-4cfd-49f7-9d87-1559f65599a3",
+        "fields": {
+            "Content": "2e26fe2e-9a73-497a-b036-64aff17d8417",
+            "user": 21,
+            "title": "t",
+            "review": "khj",
+            "rating": 4.0,
+            "status": true,
+            "created_date": "2024-04-19T16:25:38Z",
+            "updated_date": "2024-04-19T16:25:42Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "9f1b7278-19d1-4683-8572-28fde80f080f",
+        "fields": {
+            "Content": "4469e4d2-9c71-4718-94b7-50432b34b40b",
+            "user": 6,
+            "title": "d",
+            "review": "dwdwd",
+            "rating": 4.0,
+            "status": true,
+            "created_date": "2024-04-18T13:17:04.443Z",
+            "updated_date": "2024-04-18T13:17:04.443Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "a4c3b39f-a5de-4a5e-8971-a225b4725b3c",
+        "fields": {
+            "Content": "bdf04654-1d79-4bda-befe-a0a44d590d51",
+            "user": 26,
+            "title": "Best Movie\n",
+            "review": "Well the best I have seen in some time\n",
+            "rating": 5.0,
+            "status": true,
+            "created_date": "2024-04-19T17:01:04Z",
+            "updated_date": "2024-04-19T17:01:07Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "b05b9348-0099-42cc-a3f2-cba1ff12e4e8",
+        "fields": {
+            "Content": "8c582b4d-a2c9-44d6-90d2-aba2b73e0bc6",
+            "user": 4,
+            "title": "",
+            "review": "I want die",
+            "rating": 1.0,
+            "status": true,
+            "created_date": "2024-04-17T14:13:01.121Z",
+            "updated_date": "2024-04-17T14:13:01.121Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "bf6c278e-650b-449f-ac57-194bc585e9d6",
+        "fields": {
+            "Content": "4469e4d2-9c71-4718-94b7-50432b34b40b",
+            "user": 4,
+            "title": "TESTER",
+            "review": "efesfesfesfes",
+            "rating": 5.0,
+            "status": true,
+            "created_date": "2024-04-17T14:10:03.577Z",
+            "updated_date": "2024-04-17T14:10:03.577Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "d5aa2330-0b66-4bed-a20f-7ec5e9539c6f",
+        "fields": {
+            "Content": "8c582b4d-a2c9-44d6-90d2-aba2b73e0bc6",
+            "user": 6,
+            "title": "great",
+            "review": "great great",
+            "rating": 4.0,
+            "status": true,
+            "created_date": "2024-04-18T14:42:17.464Z",
+            "updated_date": "2024-04-18T14:42:17.464Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "e725cb2e-81cf-47e5-b995-bd2a8397dddc",
+        "fields": {
+            "Content": "bdf04654-1d79-4bda-befe-a0a44d590d51",
+            "user": 22,
+            "title": "Excellent",
+            "review": "It is a great family film",
+            "rating": 5.0,
+            "status": true,
+            "created_date": "2024-04-19T16:57:29Z",
+            "updated_date": "2024-04-19T16:57:32Z"
+        }
+    },
+    {
+        "model": "Ratings_Review.reviewrating",
+        "pk": "fa927a77-686f-4941-9c6d-9cb442f2a49d",
+        "fields": {
+            "Content": "bdf04654-1d79-4bda-befe-a0a44d590d51",
+            "user": 5,
+            "title": "Average",
+            "review": "I would say Okay\n",
+            "rating": 3.0,
+            "status": true,
+            "created_date": "2024-04-19T16:49:00Z",
+            "updated_date": "2024-04-19T16:49:03Z"
+        }
+    }
+]

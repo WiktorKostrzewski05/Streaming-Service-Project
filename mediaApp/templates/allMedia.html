@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+  <style>
+    scroll-behavior: smooth;
+    .mediaContainer::-webkit-scrollbar {
+      width: 0 !important;
+  }
+  .thumbnail{
+    height: 22vh;
+    object-fit: cover;
+  }
+  
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  .mediaContainer {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+  }
+  @media screen and (max-width: 800px) {
+    .thumbnail{
+      height: 15vh;
+      object-fit: cover;
+    }
+  }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous" />
+
+
+  <title>Watchy - All</title>
+
+  <div style="min-height: 75vh; overflow: hidden;" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div style="height: 75vh;" class="carousel-inner">
+      {% for feature in Featured %}
+        <a href="{% url 'mediaApp:view_media' content_id=feature.content.id %}" style="height: 75vh;" class="carousel-item {{feature.first}}" data-bs-interval="10000">
+          <img src="{{feature.content.con_icon}}" class="w-100" alt="..." />
+          <div class="carousel-caption text-start">
+            <p class="h1 text-white">{{feature.featureInfo.feat_title}}</p>
+            <p class="display-3 text-white">{{feature.content.con_title}}</p>
+            <p class="text-white">{{feature.content.con_description}}</p>
+          </div>
+        </a>
+      {% endfor %}
+    
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <i  class=" fs-1  bi bi-chevron-left text-white"></i>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <i  class=" fs-1  bi bi-chevron-right text-white"></i>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <ul class="nav justify-content-center nav-underline mt-5" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active fs-5" id="pills-allMedia-tab" data-bs-toggle="pill" data-bs-target="#pills-allMedia" type="button" role="tab" aria-controls="pills-allMedia" aria-selected="true">All Media</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link fs-5" id="pills-movie-tab" data-bs-toggle="pill" data-bs-target="#pills-movie" type="button" role="tab" aria-controls="pills-movie" aria-selected="false">Movies</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link fs-5" id="pills-show-tab" data-bs-toggle="pill" data-bs-target="#pills-show" type="button" role="tab" aria-controls="pills-show" aria-selected="false">Shows</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-allMedia" role="tabpanel" aria-labelledby="pills-allMedia-tab" tabindex="0">
+      <div style="overflow-x: hidden;" class="mediaContainer">
+        {% for row in Rows %}
+        {% if row.rowType == "allContent"%}
+          <div class="carousel slide overflow-show mb-5">
+            <p class="h4 text-white  ms-5">{{row.rowInfo.row_title}}</p>
+              <a onclick={scrollFunc("Left","{{row.rowInfo.id}}")} class="position-absolute top-50 start-0 translate-middle-y mx-2 pb-5"><i  class=" fs-1  bi bi-chevron-left text-white"></i></a>
+              <a onclick={scrollFunc("Right","{{row.rowInfo.id}}")} class="position-absolute top-50 end-0 translate-middle-y mx-2 pb-5"><i  class=" fs-1  bi bi-chevron-right text-white"></i></a>
+                <div style=" max-width: 100vw; overflow-x: auto;" id="{{row.rowInfo.id}}" class="postion-relative mediaContainer d-flex flex-row px-5 gap-4">
+                  {% for content in row.contentList %}
+                  <a href="{% url 'mediaApp:view_media' content_id=content.id %}" class="col-3 text-decoration-none">
+                    <img class="img-fluid thumbnail rounded w-100" src="{{content.con_icon}}" alt="" />
+                    <p class="text-start text-white">{{content.con_title}}</p>
+                  </a>
+                  {% endfor %}
+            </div>
+          </div>
+          {%endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-movie" role="tabpanel" aria-labelledby="pills-movie-tab" tabindex="0">
+      <div style="overflow-x: hidden;" class="mediaContainer">
+        {% for row in Rows %}
+        {% if row.rowType == "movie"%}
+          <div class="carousel slide overflow-show mb-5">
+            <p class="h4 text-white  ms-5">{{row.rowInfo.row_title}}</p>
+              <a onclick={scrollFunc("Left","{{row.rowInfo.id}}")} class="position-absolute top-50 start-0 translate-middle-y mx-2 pb-5"><i  class=" fs-1  bi bi-chevron-left text-white"></i></a>
+              <a onclick={scrollFunc("Right","{{row.rowInfo.id}}")} class="position-absolute top-50 end-0 translate-middle-y mx-2 pb-5"><i  class=" fs-1  bi bi-chevron-right text-white"></i></a>
+                <div style=" max-width: 100vw; overflow-x: auto;" id="{{row.rowInfo.id}}" class="postion-relative mediaContainer d-flex flex-row px-5 gap-4">
+                  {% for content in row.contentList %}
+                  <a href="{% url 'mediaApp:view_media' content_id=content.id %}" class="col-3 text-decoration-none">
+                    <img class="img-fluid thumbnail rounded w-100" src="{{content.con_icon}}" alt="" />
+                    <p class="text-start text-white">{{content.con_title}}</p>
+                  </a>
+                  {% endfor %}
+            </div>
+          </div>
+          {%endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-show" role="tabpanel" aria-labelledby="pills-show-tab" tabindex="0">
+      <div style="overflow-x: hidden;" class="mediaContainer">
+        {% for row in Rows %}
+        {% if row.rowType == "show"%}
+          <div class="carousel slide overflow-show mb-5">
+            <p class="h4 text-white  ms-5">{{row.rowInfo.row_title}}</p>
+              <a onclick={scrollFunc("Left","{{row.rowInfo.id}}")} class="position-absolute top-50 start-0 translate-middle-y mx-2 pb-5"><i  class=" fs-1  bi bi-chevron-left text-white"></i></a>
+              <a onclick={scrollFunc("Right","{{row.rowInfo.id}}")} class="position-absolute top-50 end-0 translate-middle-y mx-2 pb-5"><i  class=" fs-1  bi bi-chevron-right text-white"></i></a>
+                <div style=" max-width: 100vw; overflow-x: auto;" id="{{row.rowInfo.id}}" class="postion-relative mediaContainer d-flex flex-row px-5 gap-4">
+                  {% for content in row.contentList %}
+                  <a href="{% url 'mediaApp:view_media' content_id=content.id %}" class="col-3 text-decoration-none">
+                    <img class="img-fluid thumbnail rounded w-100" src="{{content.con_icon}}" alt="" />
+                    <p class="text-start text-white">{{content.con_title}}</p>
+                  </a>
+                  {% endfor %}
+            </div>
+          </div>
+          {%endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  
+
+  <script src="{% static 'js/scroll.js' %}"></script>
+{% endblock %}

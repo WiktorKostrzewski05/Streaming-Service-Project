@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% block title %}
+  Log In
+{% endblock %}
+{% block content %}
+  <p class="text-center mb-5 display-5 text-white">Support Ticket</p>
+  <div class="d-flex justify-content-center p-5">
+    <div style="max-width: 1000px;" class="glass w-100 p-4 position-relative rounded rounded-3">
+      <a class="btn btn-primary btn-lg text" type=button value="Previous Page" onClick="javascript:history.go(-1);">Back</a>
+
+      <div class="row text-end h5">
+        <p>{{Request.user.username}} | {{Request.user.email}} | {{Request.req_date_requested}}</p>
+      </div>
+      <div class="row">
+        <p class="h3">Subject: {{ Request.req_subject }}</p>
+      </div>
+      <div class="row">
+        <p class="h4">Category: {{ Request.req_category }}</p>
+      </div>
+      <p class="h4 mt-4">Description:</p>
+      <div class="row">
+        <p class="p">{{ Request.req_description }}</p>
+      </div>
+      <div class="text-end">
+      {% if Request.req_status == 'new' %}
+          <p class="btn btn-primary btn-lg">Status: New</p>
+        {% elif Request.req_status == 'in_progress' %}
+          <p class="btn btn-warning btn-lg">Status: In Progress</p>
+        {% elif Request.req_status == 'stuck' %}
+          <p class="btn btn-danger btn-lg">Status: Stuck</p>
+        {% elif Request.req_status == 'resolved' %}
+          <p class="btn btn-success btn-lg">Status: Resolved</p>
+        {% elif Request.req_status == 'closed_not_resolved' %}
+          <p class="btn btn-dark btn-lg">Status: Closed Not Resolved</p>
+        {% endif %}
+      </div>
+    </div>
+    </div>
+  </div>
+{% endblock %}

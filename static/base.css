@@ -1,0 +1,29 @@
+.bg-watchyP {
+    background-color: #00aaff;
+}
+
+.text-watchy {
+    color: #00aaff;
+}
+
+.links {
+    text-decoration: none;
+}
+
+.navbar-toggler {
+    color: #000000;
+}
+
+
+.glass {
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    background-color: rgba(0, 0, 0, 0.79);
+    z-index: 0;
+}
+
+.nav-item,
+ul li {
+    text-decoration: none;
+    list-style-type: none;
+}

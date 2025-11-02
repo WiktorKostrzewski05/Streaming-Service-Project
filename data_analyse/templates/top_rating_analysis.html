@@ -1,0 +1,49 @@
+{% extends 'admin/base.html' %}
+{% block title %}
+  Admin Analysis
+{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h1 class="text-center">Ratings page</h1>
+        <div id="top_rated"></div>
+        <div style="margin-bottom: 20px;">
+          <script>
+          
+            var rating_data = JSON.parse('{{ rated_data | safe}}')
+
+            var trace = {
+              x: rating_data.titles,
+              y: rating_data.total_ratings,
+              type: 'bar'
+            };
+
+            var layout = {
+              title: 'Top Rated Movies',
+              xaxis: { title: 'Titles' },
+              yaxis: { title: 'Total Ratings' },
+            };
+
+
+            var config = {
+              staticPlot: false,
+              displayModeBar: false,
+              responsive: true,
+            };
+
+            Plotly.newPlot('top_rated', [trace], layout, config);
+            
+          </script>
+         
+        </div>
+      </div>
+          <a class="btn btn-primary btn-lg" type="button" value="Previous Page" onClick="javascript:history.go(-1);">Back</a>
+        </div>
+      </div>
+{% endblock %}

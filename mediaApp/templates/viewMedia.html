@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .trailer {
+    height: 50vh;
+    height: 50svh;
+    width: 100%;
+  }
+
+  .main {
+    max-width: 900px;
+    min-height: 100vh;
+  }
+
+  .rate>input {
+    display: none;
+  }
+
+  .rate {
+    display: inline-block;
+    border: 0;
+    direction: rtl;
+  }
+
+  .rate>label:before {
+    display: inline-block;
+    font-size: 1.1rem;
+    content: "\f005";
+    margin: 0;
+    font-family: FontAwesome;
+    padding: 0.3rem .2rem;
+    cursor: pointer;
+  }
+
+  .rate>input:checked~label,
+  label:hover~label,
+  label:hover {
+    color: yellow;
+  }
+
+  .rate>input:checked+label:hover,
+  input:checked~label:hover,
+  input:checked~label:hover~label,
+  label:hover input:checked~label {
+    color: grey;
+  }
+
+  /*
+  .rate {
+    display: inline-block;
+    border: 0;
+    direction: rtl;
+  }
+
+  .rate>label {
+    float: right;
+  }
+
+  .rate>label:before {
+    display: inline-block;
+    font-size: 1.1rem;
+    content: "\f005";
+    margin: 0;
+    font-family: FontAwesome;
+    padding: 0.3rem .2rem;
+    cursor: pointer;
+  } */
+</style>
+
+<title>Watchy - {{ Content.con_title }}</title>
+<script>
+  document.getElementById("ratingForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    var rating = document.querySelector('input[name="rating"]:checked').value;
+    console.log("Rating submitted: " + rating);
+  });
+</script>
+<div class="d-flex justify-content-center mb-5">
+  <div class="main glass p-4 rounded d-flex flex-column justify-content-center">
+    <video class="trailer" loop muted autoplay controls controlsList="nodownload">
+      <source src="{{ Content.con_trailer.file_url }}" />
+    </video>
+    <div class="d-flex justify-content-between align-items-center gap-3 mt-5">
+      <div>
+      <p class="h1">{{ Content.con_title }}</p>
+      <i class="bi bi-star-fill fs-5 d-flex flex-row">
+        <p class="ms-2 h4 fs-5">{{ AverageRating }}</p>
+      </i>
+    </div>
+
+      <div class="d-flex mb-5 me-5">
+        {%if Movie%}
+        <a href="{% if AllowedPlay == True %} {% url 'mediaApp:view_media_player' content_id=Content.id media_id=Movie.id %} {% else %} /subscribe {% endif %}"
+          class="btn btn-lg bg-white text-black px-md-4"><i class="bi bi-play-fill"></i>Play</a>
+        {%endif%}
+      </div>
+    </div>
+    <form class="d-flex flex-column my-4 px-lg-5" action="{%url 'submited_review' content_id=Content.id %}" method="POST">
+      {% csrf_token %}
+      <h5>Leave your Feedback</h5>
+      <div>
+        <h6>Whats your rating</h6>
+        <div class="rate">
+          <input type="radio" name="rating" id="rating5" value="5" required>
+          <label for="rating5" title="5"></label>
+          <input type="radio" name="rating" id="rating4" value="4" required>
+          <label for="rating4" title="4"></label>
+          <input type="radio" name="rating" id="rating3" value="3" required>
+          <label for="rating3" title="3"></label>
+          <input type="radio" name="rating" id="rating2" value="2" required>
+          <label for="rating2" title="2"></label>
+          <input type="radio" name="rating" id="rating1" value="1" required>
+          <label for="rating1" title="1"></label>
+        </div>
+        <br>
+        Review Title:
+        <input type="text" class="form-control" name="title">
+        <br>
+        Review:
+        <textarea name="review" rows="4" class="form-control"></textarea>
+        <br>
+        {% if user.is_authenticated %}
+        <div class="text-end">
+          <input type="submit" value="Submit Review" class="btn btn-secondary mb-3">
+        </div>
+        {% else %}
+        <p>You must be logged in to post a review. <span><a href="{% url 'login' %}">Login now</a></span></p>
+        {% endif %}
+
+      </div>
+    </form>
+
+    {% if Content.reviewrating_set.all %}
+    <div class="px-lg-5">
+      <p class="d-inline-flex gap-1 ">
+        <div class="text-end">
+          <button class="btn btn-secondary text-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">
+            Reviews
+            <i class="bi bi-caret-down-fill bold"></i>
+          </button>
+      </div>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div>
+        </div>
+        <ul>
+          {% for review in Content.reviewrating_set.all %}
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="fw-bold">{{ review.user }}</div>
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-star-fill">{{ review.rating }}</i>
+                </div>
+              </div>
+              <h6 class="text-muted">{{ review.title }}</h6>
+              <p class="">{{ review.review }}</p>
+              <div class="text-muted text-end">
+                <small>Posted on: {{ review.created_date }}</small>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+
+    
+    <ul class="nav nav-pills mb-3 flex-column flex-sm-row" id="pills-tab" role="tablist">
+      {% for pill in PillList %}
+      <li class="nav-item me-2" role="presentation">
+        <button class="nav-link {% if forloop.first %}active{% endif %}" id="pills-{{ pill.Id }}-tab"
+          data-bs-toggle="pill" data-bs-target="#pills-{{ pill.Id }}" type="button" role="tab"
+          aria-controls="pills-home" aria-selected="true">{{ pill.Title }}</button>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+      {% for pill in PillList %}
+      <div class=" tab-pane fade gap-3 {% if forloop.first %}show active{% endif %}" id="pills-{{ pill.Id }}"
+        role="tabpanel">
+        {% for media in pill.Media %}
+        <a href="{% if AllowedPlay == True %} {% url 'mediaApp:view_media_player' content_id=Content.id media_id=media.Info.id %} {% else %} /subscribe {% endif %}"
+          class="d-flex gap-3 glass rounded px-5 align-items-center text-decoration-none text-white mb-2">
+          <i class="bi bi-play-circle-fill fs-2"></i>
+          <div class="p-3">
+            <p class="h5">{{media.Info.med_title}}</p>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

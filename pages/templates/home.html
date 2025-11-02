@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <title>Watchy</title>
+
+  <div style="max-width: 99vw;" class="container-fluid overflow-x-hidden"> 
+  <div class="top_display position-relative">
+    <img style="  object-fit: cover; height: 80vh; width: 100vw;" src="{% static 'HomepageCover.png' %}" alt="" />
+    <div class="z-3 position-absolute top-50 start-50 translate-middle text-center">
+      <h1 class="z-3 text-center display-5 text-white fw-bold">Stream brand new Originals, blockbusters, binge-worthy series and more</h1>
+      <a href="/media/all" class="fs-3 py-2 px-4 mt-5 btn btn-lg btn-primary text-center">Start Watching!</a>
+    </div>
+  </div>
+
+  <div class=" px-5 mt-5 d-flex d-flex justify-content-center align-items-center flex-column">
+    <p class="h1 mt-5 text-center">All The Great Movie and TV You Want</p>
+    <p class="h5 text-center">Watch full seasons of exclusive streaming series, </br> current-season episodes, hit movies, WatchY Originals, kids shows, and more.</p>
+    <img class="mt-2 text-center" style="  object-fit: cover; width: 60vw;" src="{% static 'GreatStories.png' %}" alt="" />
+  </div>
+
+  <div class=" px-5 mt-5 mb-5 d-flex d-flex justify-content-center align-items-center flex-column">
+    <p class="h1 mt-5 text-center">Start looking through great Movies and TV</p>
+    <p class="h5 text-center">Find a new show to binge or a new movie to get lost in!</p>
+    <a href="/media/all" class="fs-3 py-2 px-4 mt-5 btn btn-lg btn-primary text-center mb-5">Start Watching!</a>
+  </div>
+
+  <div  class=" px-5 mt-5 d-flex d-flex justify-content-center align-items-center flex-column">
+    <p class="h3 text-center mb-3">Have any questions?</p>
+
+  <div style="max-width: 1000px;" class="w-100 list-group">
+    <a data-bs-toggle="collapse" data-bs-target="#collapse1" href="" class="list-group-item list-group-item-action ">What is Watchy?
+      <div class="collapse" id="collapse1">
+        <div class="card card-body border-0">
+          Watchy is a steaming service that offers great TV and Movies
+        </div>
+      </div>
+    </a>
+    <a data-bs-toggle="collapse" data-bs-target="#collapse2" href="" class="list-group-item list-group-item-action ">Can I cancel my subscription?
+      <div class="collapse" id="collapse2">
+        <div class="card card-body border-0">
+          Yes of course! Just click the subscription tab and click cancel.
+        </div>
+      </div>
+    </a>
+    <a data-bs-toggle="collapse" data-bs-target="#collapse3" href="" class="list-group-item list-group-item-action ">How do I contact support?
+      <div class="collapse" id="collapse3">
+        <div class="card card-body border-0">
+          If you have an issue click the support tab and raise a new support ticket. Our support team will then be in contact with you.
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+</div>
+<footer class="footer mt-auto mt-5 py-3">
+  <div class="container mt-5">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
+          <a href="{% url 'home' %}" class="col-md-4 mb-0 text-decoration-none">
+              <p class=" text-white">@watchY</p>
+          </a>
+          <p class="col-md-4 mb-0 text-end text-white">Alex, James, Wiktor</p>
+      </footer>
+  </div>
+</footer>
+{% endblock %}

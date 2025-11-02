@@ -1,0 +1,23 @@
+<!-- wathY Admin Log-In -->
+{% extends 'base.html' %}
+{% block title %}
+  Log In
+{% endblock %}
+{% block content %}
+  <div class="d-flex justify-content-center mt-5 p-3">
+    <form style="max-width: 500px; height: 60vh;" class="glass w-100 p-4 position-relative rounded rounded-5" method="post">
+      <p class="text-center mb-5 display-5 text-white">wathY Administrator</p>
+      <p class="text-center mb-5 display-5 text-white">Log In</p>
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="d-flex flex-column text-center text-white mb-4 px-5">
+          <label class="text-rgh row">{{ field.label }}</label>
+          {{ field }}
+          {{ field.errors }}
+        </div>
+      {% endfor %}
+      
+      <button class="btn btn-lg btn-primary px-4 mb-5 position-absolute bottom-0 start-50 translate-middle-x" type="submit">Log In</button>
+    </form>
+  </div>
+{% endblock %}

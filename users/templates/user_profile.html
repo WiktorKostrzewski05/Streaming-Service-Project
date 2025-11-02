@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+  User Profile
+{% endblock %}
+{% block content %}
+  <title>WatchY - Your Profile</title>
+
+  <div class="container-fluid d-flex flex-column alight-items-center justify-content-center mt-5">
+    <div class="container-sm rounded rounded-5 p-5 glass">
+      <h1 class="text-center">Your Profile</h1>
+      <div class="container align-self-center p-5">
+        <p class="h4 fw-normal">Biography: {{ user.profile.bio }}</p>
+        <p class="h4 fw-normal">Favorite Actor/Actress: {{ user.profile.fav_actor }}</p>
+        <p class="h4 fw-normal">Favorite Director: {{ user.profile.fav_director }}</p>
+        <p class="h4 fw-normal">Favorit Genre: {{ user.profile.fav_genre }}</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
